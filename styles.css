@@ -1,0 +1,147 @@
+/* Основной стиль страницы */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ff9a8b, #ff4d6d);
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    z-index: 1;
+}
+
+.main-heading {
+    font-size: 50px;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 20px;
+    opacity: 1;
+    animation: fadeOutBackground 2s forwards; /* Заголовок исчезает и затемняет фон */
+}
+
+.love-message {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 30px;
+    font-style: italic;
+    opacity: 0;
+    animation: fadeIn 2s 2s forwards; /* Текст появляется позже */
+}
+
+.show-button, .close-button {
+    background-color: #ff4d6d;
+    color: white;
+    border: none;
+    padding: 18px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    margin: 10px;
+}
+
+.show-button:hover, .close-button:hover {
+    background-color: #ff1f3d;
+    transform: scale(1.1);
+}
+
+.show-button:focus, .close-button:focus {
+    outline: none;
+}
+
+/* Эффекты для затемнения фона и выделения */
+body.darkened {
+    background: rgba(0, 0, 0, 0.8);
+    transition: background 2s ease-out; /* Затемнение фона */
+}
+
+.container.highlighted {
+    filter: brightness(2); /* Яркость контента */
+    transition: filter 1s ease-out;
+}
+
+/* Стили для модального окна */
+#surprise-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#surprise-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 500px;
+    width: 80%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    animation: slideInModal 0.5s ease-out forwards, changeColor 2s 2s forwards; /* Анимация для модального окна и изменения цвета */
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutBackground {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes slideInModal {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Анимация для изменения цвета фона модального окна */
+@keyframes changeColor {
+    0% {
+        background-color: #fff;
+    }
+    100% {
+        background-color: #ff4d6d; /* Новый цвет */
+    }
+}
